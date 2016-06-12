@@ -1,0 +1,17 @@
+{
+  "name": "<%= setup.name %>",
+  "version": "<%= setup.version %>",
+  "description": "<%= setup.description %>",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run webpack && concurrently \"npm run webpack:w\" \"npm run serve\"",
+    "webpack": "webpack",
+    "webpack:w": "webpack -w",
+    "serve": "live-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "<%= setup.author %>",
+  "license": "<%= setup.license %>",
+  "dependencies": {},
+  "devDependencies": {}
+}

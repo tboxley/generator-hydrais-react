@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+
+# IDE/OS Files
+.idea/
+.DS_Store
+
+# Misc files
+npm-debug.log
