@@ -1,6 +1,8 @@
 generator-hydrais-react
 -----------------------
 
+[![NPM](https://nodei.co/npm/generator-hydrais-react.png)](https://nodei.co/npm/generator-hydrais-react/)
+
 A [Yeoman](http://yeoman.io/) generator to create a very basic React application
 complete with [Babel](https://babeljs.io/), [Webpack](https://webpack.github.io/), and [Twitter Bootstrap](http://getbootstrap.com/).
 
