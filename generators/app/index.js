@@ -93,10 +93,22 @@ module.exports = generators.Base.extend({
 			{ setup: this.setup, names: this.getNames(this.setup.name) }
 		);
 
+		this.fs.copyTpl(
+			this.templatePath('babelrc'),
+			this.destinationPath('.babelrc'),
+			{ setup: this.setup, names: this.getNames(this.setup.name) }
+		);
+
 		if ( this.options.library ) {
 			this.fs.copyTpl(
 				this.templatePath(path.join('components', 'App.library.jsx')),
 				this.destinationPath(path.join('src', 'components', 'App.jsx')),
+				{ setup: this.setup, names: this.getNames(this.setup.name) }
+			);
+
+			this.fs.copyTpl(
+				this.templatePath(path.join('test', 'components', 'AppTest.js')),
+				this.destinationPath(path.join('test', 'components', 'AppTest.js')),
 				{ setup: this.setup, names: this.getNames(this.setup.name) }
 			);
 		} else {
@@ -117,6 +129,12 @@ module.exports = generators.Base.extend({
 			this.fs.copyTpl(
 				this.templatePath(path.join('components', 'layout', 'Main.jsx')),
 				this.destinationPath(path.join('src', 'components', 'layout', 'Main.jsx')),
+				{ setup: this.setup, names: this.getNames(this.setup.name) }
+			);
+
+			this.fs.copyTpl(
+				this.templatePath(path.join('test', 'components', 'layout', 'MainTest.js')),
+				this.destinationPath(path.join('test', 'components', 'layout', 'MainTest.js')),
 				{ setup: this.setup, names: this.getNames(this.setup.name) }
 			);
 
@@ -152,7 +170,12 @@ module.exports = generators.Base.extend({
 				'babel-loader',
 				'babel-preset-es2015',
 				'babel-preset-react',
-				'webpack'
+				'babel-jest',
+				'babel-polyfill',
+				'webpack',
+				'react-addons-test-utils',
+				'jest-cli',
+				'react-dom'
 			], { 'saveDev': true });
 		} else {
 			this.npmInstall([
@@ -161,9 +184,13 @@ module.exports = generators.Base.extend({
 				'babel-loader',
 				'babel-preset-es2015',
 				'babel-preset-react',
+				'babel-jest',
+				'babel-polyfill',
 				'webpack',
 				'live-server',
-				'concurrently'
+				'concurrently',
+				'react-addons-test-utils',
+				'jest-cli'
 			], { 'saveDev': true });
 		}
 	},
