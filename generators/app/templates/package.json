@@ -8,10 +8,19 @@
     "webpack": "webpack",
     "webpack:w": "webpack -w",
     "serve": "live-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "<%= setup.author %>",
   "license": "<%= setup.license %>",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {},
+  "jest": {
+    "testDirectoryName": "test",
+    "moduleFileExtensions": [ "js", "jsx" ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react/",
+      "<rootDir>/node_modules/react-dom/",
+      "<rootDir>/node_modules/react-addons-test-utils/"
+    ]
+  }
 }
