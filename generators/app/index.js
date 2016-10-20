@@ -94,6 +94,12 @@ module.exports = generators.Base.extend({
 		);
 
 		this.fs.copyTpl(
+			this.templatePath('editorconfig'),
+			this.destinationPath('.editorconfig'),
+			{ setup: this.setup, names: this.getNames(this.setup.name) }
+		);
+
+		this.fs.copyTpl(
 			this.templatePath('babelrc'),
 			this.destinationPath('.babelrc'),
 			{ setup: this.setup, names: this.getNames(this.setup.name) }
@@ -127,14 +133,20 @@ module.exports = generators.Base.extend({
 			);
 
 			this.fs.copyTpl(
-				this.templatePath(path.join('components', 'layout', 'Main.jsx')),
-				this.destinationPath(path.join('src', 'components', 'layout', 'Main.jsx')),
+				this.templatePath(path.join('components', 'pages', 'home', 'HomePage.jsx')),
+				this.destinationPath(path.join('src', 'components', 'pages', 'home', 'HomePage.jsx')),
 				{ setup: this.setup, names: this.getNames(this.setup.name) }
 			);
 
 			this.fs.copyTpl(
 				this.templatePath(path.join('test', 'components', 'layout', 'MainTest.js')),
 				this.destinationPath(path.join('test', 'components', 'layout', 'MainTest.js')),
+				{ setup: this.setup, names: this.getNames(this.setup.name) }
+			);
+
+			this.fs.copyTpl(
+				this.templatePath(path.join('components', 'layout', 'Navigation.jsx')),
+				this.destinationPath(path.join('src', 'components', 'layout', 'Navigation.jsx')),
 				{ setup: this.setup, names: this.getNames(this.setup.name) }
 			);
 
@@ -159,7 +171,9 @@ module.exports = generators.Base.extend({
 				'jquery',
 				'react',
 				'react-dom',
-				'react-router'
+				'react-router',
+				'react-bootstrap',
+				'react-router-bootstrap'
 			], { 'save': true });
 		}
 
@@ -190,7 +204,9 @@ module.exports = generators.Base.extend({
 				'live-server',
 				'concurrently',
 				'react-addons-test-utils',
-				'jest-cli'
+				'jest-cli',
+				'style-loader',
+				'css-loader'
 			], { 'saveDev': true });
 		}
 	},

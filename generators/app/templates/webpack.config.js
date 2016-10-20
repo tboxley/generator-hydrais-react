@@ -14,6 +14,15 @@ module.exports = {
 
   module: {
     loaders: [
+      { 
+        test: /\.css$/, 
+        exclude: /\.useable\.css$/, 
+        loader: "style!css" 
+      },
+      { 
+        test: /\.useable\.css$/, 
+        loader: "style/useable!css" 
+      },
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
